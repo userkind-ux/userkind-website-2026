@@ -1,26 +1,273 @@
 @import "tailwindcss";
 
+/* ===================================
+   Userkind Design System Tokens
+   =================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors - Brand */
+  --color-lilac: #cb72ff;
+  --color-lilac-light: #da9aff;
+  --color-lilac-lighter: #eac7ff;
+  --color-yellow: #fffd83;
+  --color-yellow-light: #fffeab;
+  
+  /* Colors - Neutrals */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-grey: #f1f1f1;
+  
+  /* Spacing Scale */
+  --spacing-3xs: 8px;
+  --spacing-2xs: 12px;
+  --spacing-xs: 16px;
+  --spacing-sm: 24px;
+  --spacing-md: 32px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-2xl: 120px;
+  
+  /* Font Sizes - Headings */
+  --font-size-h1: 96px;
+  --font-size-h2: 64px;
+  --font-size-h3: 48px;
+  --font-size-h4: 32px;
+  --font-size-h5: 24px;
+  --font-size-subheading: 18px;
+  
+  /* Font Sizes - Body */
+  --font-size-body-lg: 20px;
+  --font-size-body-md: 16px;
+  
+  /* Font Sizes - Special */
+  --font-size-special-lg: 40px;
+  --font-size-special-sm: 24px;
+  --font-size-ticker: 66px;
+  
+  /* Line Heights */
+  --line-height-h1: 80px;
+  --line-height-h2: 64px;
+  --line-height-h3: 48px;
+  --line-height-h4: 32px;
+  --line-height-h5: 24px;
+  --line-height-body-lg: 28px;
+  --line-height-body-md: 22px;
+  --line-height-ticker: 56px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 36px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-button: -3px 4px 0px 0px #000000;
+  --shadow-button-lg: -6px 4px 0px 0px #000000;
+  
+  /* Container */
+  --container-max: 2000px;
+  --container-padding: 50px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ===================================
+   Base Styles
+   =================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nikkei-maru), system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--color-black);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================================
+   Typography Utilities
+   =================================== */
+
+.font-heading {
+  font-family: var(--font-nikkei-maru), system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.font-body {
+  font-family: var(--font-nikkei-maru), system-ui, sans-serif;
+  font-weight: 300;
+}
+
+.font-special {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-weight: 400;
+}
+
+.text-h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  letter-spacing: -1.92px;
+}
+
+.text-h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  letter-spacing: -1.28px;
+}
+
+.text-h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  letter-spacing: -0.96px;
+}
+
+.text-h4 {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  letter-spacing: -0.64px;
+}
+
+.text-h5 {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  letter-spacing: -0.48px;
+}
+
+.text-subheading {
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+}
+
+.text-body-lg {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+.text-body-md {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+}
+
+.text-special-lg {
+  font-size: var(--font-size-special-lg);
+  line-height: var(--line-height-h3);
+  letter-spacing: -0.8px;
+}
+
+.text-special-sm {
+  font-size: var(--font-size-special-sm);
+  line-height: var(--line-height-h5);
+  letter-spacing: -0.48px;
+}
+
+.text-ticker {
+  font-size: var(--font-size-ticker);
+  line-height: var(--line-height-ticker);
+  letter-spacing: 1.32px;
+  text-transform: uppercase;
+}
+
+/* ===================================
+   Layout Utilities
+   =================================== */
+
+.container-uk {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-xs);
+}
+
+@media (min-width: 768px) {
+  .container-uk {
+    padding-inline: var(--spacing-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-uk {
+    padding-inline: var(--container-padding);
+  }
+}
+
+/* ===================================
+   Component Base Styles
+   =================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-md);
+  font-family: var(--font-nikkei-maru), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-subheading);
+  line-height: var(--line-height-h5);
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-yellow);
+  color: var(--color-black);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover {
+  transform: translate(-1px, 2px);
+  box-shadow: -2px 2px 0px 0px #000000;
+}
+
+.card {
+  background: var(--color-white);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+}
+
+.animate-ticker-slow {
+  animation: ticker 60s linear infinite;
+}
+
+/* ===================================
+   Responsive Typography
+   =================================== */
+
+@media (max-width: 1023px) {
+  .text-h1 { font-size: 64px; line-height: 64px; }
+  .text-h2 { font-size: 48px; line-height: 52px; }
+  .text-h3 { font-size: 36px; line-height: 40px; }
+  .text-ticker { font-size: 48px; line-height: 48px; }
+}
+
+@media (max-width: 639px) {
+  .text-h1 { font-size: 40px; line-height: 44px; }
+  .text-h2 { font-size: 32px; line-height: 36px; }
+  .text-h3 { font-size: 28px; line-height: 32px; }
+  .text-h4 { font-size: 24px; line-height: 28px; }
+  .text-ticker { font-size: 32px; line-height: 36px; }
+  :root { --container-padding: 16px; }
 }
