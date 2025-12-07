@@ -2,6 +2,8 @@ import { getTestimonials } from '@/lib/supabase/queries/global-elements'
 import DataTable from '@/components/admin/DataTable'
 import { Testimonial } from '@/lib/supabase/queries/global-elements'
 
+export const dynamic = 'force-dynamic'
+
 export default async function TestimonialsPage() {
   const testimonials = await getTestimonials()
 

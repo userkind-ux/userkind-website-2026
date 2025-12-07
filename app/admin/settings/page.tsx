@@ -1,5 +1,7 @@
 import { getSiteSettings } from '@/lib/supabase/queries/settings'
 
+export const dynamic = 'force-dynamic'
+
 export default async function SettingsPage() {
   const settings = await getSiteSettings()
 

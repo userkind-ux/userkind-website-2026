@@ -1,5 +1,7 @@
 import { getFooter } from '@/lib/supabase/queries/global-elements'
 
+export const dynamic = 'force-dynamic'
+
 export default async function FooterPage() {
   const footer = await getFooter()
 

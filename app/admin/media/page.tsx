@@ -1,6 +1,8 @@
 import { getMedia } from '@/lib/supabase/queries/media'
 import MediaGalleryClient from '@/components/admin/MediaGalleryClient'
 
+export const dynamic = 'force-dynamic'
+
 export default async function MediaPage({
   searchParams,
 }: {

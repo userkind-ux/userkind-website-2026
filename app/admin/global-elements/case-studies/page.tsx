@@ -2,6 +2,8 @@ import { getCaseStudies } from '@/lib/supabase/queries/global-elements'
 import DataTable from '@/components/admin/DataTable'
 import { CaseStudy } from '@/lib/supabase/queries/global-elements'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CaseStudiesPage() {
   const caseStudies = await getCaseStudies()
 

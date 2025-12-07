@@ -2,6 +2,8 @@ import { getPages } from '@/lib/supabase/queries/pages'
 import DataTable from '@/components/admin/DataTable'
 import { Page } from '@/lib/supabase/queries/pages'
 
+export const dynamic = 'force-dynamic'
+
 export default async function PagesPage({
   searchParams,
 }: {
