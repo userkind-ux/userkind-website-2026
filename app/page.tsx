@@ -1,6 +1,37 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 
 export default function Home() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check if there's an access token in the URL (from Supabase auth callback)
+    const hash = window.location.hash
+    if (hash) {
+      // Check for password reset token first
+      if (hash.includes('type=recovery') || hash.includes('recovery')) {
+        window.location.href = '/reset-password' + hash
+        return
+      }
+      
+      // Check for regular access token
+      if (hash.includes('access_token')) {
+        window.location.href = '/auth/callback' + hash
+        return
+      }
+    }
+
+    // Also check query parameters (some Supabase configs use query params)
+    const searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('type') && searchParams.get('type') === 'recovery') {
+      window.location.href = '/reset-password' + window.location.search + window.location.hash
+      return
+    }
+  }, [router])
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
