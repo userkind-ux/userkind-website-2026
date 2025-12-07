@@ -1,6 +1,7 @@
 import { getHeader } from '@/lib/supabase/queries/global-elements'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function HeaderPage() {
   const header = await getHeader()

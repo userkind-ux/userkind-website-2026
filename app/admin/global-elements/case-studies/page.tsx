@@ -1,10 +1,13 @@
 import { getCaseStudies } from '@/lib/supabase/queries/global-elements'
 import DataTable from '@/components/admin/DataTable'
 import { CaseStudy } from '@/lib/supabase/queries/global-elements'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function CaseStudiesPage() {
+  noStore()
   const caseStudies = await getCaseStudies()
 
   return (

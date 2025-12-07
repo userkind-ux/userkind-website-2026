@@ -3,6 +3,7 @@ import DataTable from '@/components/admin/DataTable'
 import { Form } from '@/lib/supabase/queries/global-elements'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function FormsPage() {
   const forms = await getForms()

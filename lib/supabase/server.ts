@@ -1,10 +1,14 @@
 import { createServerClient as createSupabaseServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { unstable_noStore as noStore } from 'next/cache'
 
 /**
  * Creates a Supabase client for use in Server Components, Server Actions, and API Routes
  */
 export async function createServerClient() {
+  // Prevent this from being evaluated at build time
+  noStore()
+  
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 

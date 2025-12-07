@@ -1,4 +1,5 @@
 import { createServerClient } from '../server'
+import { unstable_noStore as noStore } from 'next/cache'
 
 // Header
 export interface Header {
@@ -13,6 +14,7 @@ export interface Header {
 }
 
 export async function getHeader() {
+  noStore()
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
@@ -40,6 +42,7 @@ export interface Footer {
 }
 
 export async function getFooter() {
+  noStore()
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
@@ -70,6 +73,7 @@ export interface CaseStudy {
 }
 
 export async function getCaseStudies() {
+  noStore()
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
@@ -112,6 +116,7 @@ export interface Testimonial {
 }
 
 export async function getTestimonials() {
+  noStore()
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
@@ -153,6 +158,7 @@ export interface Form {
 }
 
 export async function getForms() {
+  noStore()
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
