@@ -8,7 +8,7 @@ interface MediaMetadataFormProps {
   onClose: () => void
   onSubmit: (data: {
     alt_text: string
-    description: string
+    description: string | null
     media_type: 'Icon' | 'Image' | 'Hero' | 'Video' | 'Logo'
   }) => void
   filename: string

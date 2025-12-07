@@ -50,14 +50,35 @@ export async function getPage(id: string) {
   return data as Page
 }
 
-export async function getPageBySlug(slug: string) {
+export async function getPublishedPages() {
   const supabase = await createServerClient()
   
   const { data, error } = await supabase
     .from('pages')
     .select('*')
+    .eq('status', 'published')
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    throw new Error(`Failed to fetch published pages: ${error.message}`)
+  }
+
+  return data as Page[]
+}
+
+export async function getPageBySlug(slug: string, publishedOnly: boolean = true) {
+  const supabase = await createServerClient()
+  
+  let query = supabase
+    .from('pages')
+    .select('*')
     .eq('slug', slug)
-    .single()
+
+  if (publishedOnly) {
+    query = query.eq('status', 'published')
+  }
+
+  const { data, error } = await query.single()
 
   if (error) {
     throw new Error(`Failed to fetch page: ${error.message}`)

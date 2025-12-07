@@ -60,7 +60,7 @@ export default function MediaGalleryClient({ initialMedia }: MediaGalleryClientP
 
   const handleMetadataSubmit = async (metadata: {
     alt_text: string
-    description: string
+    description: string | null
     media_type: 'Icon' | 'Image' | 'Hero' | 'Video' | 'Logo'
   }) => {
     if (!selectedFile) {
@@ -137,7 +137,7 @@ export default function MediaGalleryClient({ initialMedia }: MediaGalleryClientP
 
   const handleUpdateMedia = async (metadata: {
     alt_text: string
-    description: string
+    description: string | null
     media_type: 'Icon' | 'Image' | 'Hero' | 'Video' | 'Logo'
   }) => {
     if (!editingMedia) return
